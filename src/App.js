@@ -1,9 +1,10 @@
-import imageResoucres from './assets/imageResoucres';
-
+import {GlobalStyle} from './components/GlobalStyle'
+import Header from './components/Header/Header';
 function App() {
   return (
     <>
-      <img src={imageResoucres.Logo} alt="Logo Icon" />
+      <GlobalStyle/>
+      <Header/>
     </>
   );
 }
