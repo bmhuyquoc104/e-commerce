@@ -113,6 +113,37 @@ export const StyledHeader = styled.header`
     }
   }
 `;
-export const StyledActiveNavbar = styled.ul`
-  background-color:var(--clr_w);
+export const StyledActiveNavbar = styled.div`
+  min-height: 100vh;
+  display: flex;
+  width: 60%;
+  background-color: var(--clr_w);
+  gap: 3em;
+  flex-direction: column;
+  padding: 1.5em 2em;
+
+  img {
+    object-fit: cover;
+    aspect-ratio: 1/1;
+    width: 10%;
+  }
+
+  ul {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5em;
+  }
+
+  li {
+    list-style-type: none;
+    color: var(--cl_b);
+    font-weight: var(--fw_700);
+    border: none;
+    :hover {
+      border: none;
+    }
+  }
+  @media (min-width:768px){
+      display: none;
+  }
 `;
