@@ -19,6 +19,15 @@ export const GlobalStyle = createGlobalStyle`
     --fw_400:400;
     --fw_700:700;
 
+    /* Font size */
+    --step--2: clamp(0.44rem, calc(0.76rem + -0.35vw), 0.69rem);
+    --step--1: clamp(0.67rem, calc(0.81rem + -0.16vw), 0.78rem);
+    --step-0: clamp(0.88rem, calc(0.84rem + 0.18vw), 1.00rem);
+    --step-1: clamp(0.98rem, calc(0.84rem + 0.74vw), 1.50rem);
+    --step-2: clamp(1.11rem, calc(0.78rem + 1.63vw), 2.25rem);
+    --step-3: clamp(1.25rem, calc(0.64rem + 3.04vw), 3.38rem);
+    --step-4: clamp(1.40rem, calc(0.36rem + 5.23vw), 5.06rem);
+    --step-5: clamp(1.58rem, calc(-0.14rem + 8.60vw), 7.59rem);
 
 }
 
@@ -30,18 +39,16 @@ export const GlobalStyle = createGlobalStyle`
     
 }
 
-img{
-max-width:100%;
-}
+
+
+
 
 #root{
-    min-height:100vh;
     display: flex;
     justify-content:center;
     align-items:center;
-    background-color:var(--clr_dark_gb);
-    width: max(80%,300px);
-
+    background-color:var(--clr_w);
+    width:max(100%,600px);
 }
 
 `;
