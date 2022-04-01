@@ -34,10 +34,8 @@ const Header = () => {
 
   return (
     <StyledHeader
-      key="before"
       initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      exit={{ opacity: 0 }}
+      animate={{ opacity: 1, transition: {duration: 1}}}
     >
       {/* Desktop display: max-width:768px */}
       <img className="desktop-logo" src={imageResoucres.Logo} alt="Logo Icon" />
