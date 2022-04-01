@@ -40,15 +40,17 @@ export const GlobalStyle = createGlobalStyle`
 }
 
 
-
-
-
 #root{
-    display: flex;
+    display:flex;
     justify-content:center;
     align-items:center;
+}
+
+
+body{
+    min-height:100vh;
     background-color:var(--clr_w);
-    width:max(100%,600px);
+    width:max(100%,350px);
 }
 
 `;
