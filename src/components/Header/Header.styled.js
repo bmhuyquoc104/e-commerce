@@ -1,6 +1,6 @@
 import styled from "styled-components";
-
-export const StyledHeader = styled.header`
+import {motion} from 'framer-motion'
+export const StyledHeader = styled(motion.header)`
   display: flex;
   position: relative;
   gap: 3em;
@@ -113,7 +113,7 @@ export const StyledHeader = styled.header`
     }
   }
 `;
-export const StyledActiveNavbar = styled.div`
+export const StyledActiveNavbar = styled(motion.div)`
   min-height: 100vh;
   display: flex;
   width: 60%;
