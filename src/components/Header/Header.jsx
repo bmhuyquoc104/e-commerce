@@ -1,10 +1,15 @@
 import React, { useState } from "react";
 import imageResoucres from "../../assets/imageResoucres";
-import { StyledHeader, StyledActiveNavbar } from "./Header.styled";
+import {
+  GreyBlueMoon,
+  OrangeSunFill,
+  StyledHeader,
+  StyledActiveNavbar,
+} from "./Header.styled";
 import { AbsoluteFlexContainer } from "../Flex/Flex.styled";
 import { motion, AnimatePresence } from "framer-motion";
 
-const Header = () => {
+const Header = ({ themeToggler ,toggleSwitchThemeIcon}) => {
   const [toggleMenu, setToggleMenu] = useState(false);
   const [toggleCart, setToggleCart] = useState(false);
   const cardQuantity = 1;
@@ -46,6 +51,14 @@ const Header = () => {
         <li>Women</li>
         <li>About</li>
         <li>Contact</li>
+        <li className="push-right">
+          {!toggleSwitchThemeIcon ? (
+            <OrangeSunFill onClick={themeToggler} />
+          ) : (
+            <GreyBlueMoon onClick={themeToggler} />
+          )}
+        </li>
+
         <li className="push-right">
           {cardQuantity === 0 ? (
             <div className="item-quantities"></div>

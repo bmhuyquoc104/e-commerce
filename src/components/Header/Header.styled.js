@@ -1,5 +1,22 @@
 import styled from "styled-components";
-import {motion} from 'framer-motion'
+import { motion } from "framer-motion";
+
+import { MoonStarsFill } from "@styled-icons/bootstrap/MoonStarsFill";
+import { SunFill } from "@styled-icons/bootstrap/SunFill";
+
+const GreyBlueMoon = styled(MoonStarsFill)`
+  color: var(--clr_gb);
+  width: 100%;
+  height: 40px;
+`;
+const OrangeSunFill = styled(SunFill)`
+  color: var(--clr_orange);
+  width: 100%;
+  height: 40px;
+`;
+
+export {GreyBlueMoon,OrangeSunFill}
+
 export const StyledHeader = styled(motion.header)`
   display: flex;
   position: relative;
@@ -40,24 +57,23 @@ export const StyledHeader = styled(motion.header)`
     }
   }
 
-  .push-right .item-quantities{
+  .push-right .item-quantities {
     position: absolute;
     top: 3px;
-    font-size:0.7rem;
-    left:8px;
-    color:var(--clr_w);
-    padding:0 0.8em;
-    border-radius:40px;
-    background-color:var(--clr_orange);
+    font-size: 0.7rem;
+    left: 8px;
+    color: var(--clr_w);
+    padding: 0 0.8em;
+    border-radius: 40px;
+    background-color: var(--clr_orange);
   }
 
-  .card-content-empty h4{
-    padding:4em 0 3.5em 0;
+  .card-content-empty h4 {
+    padding: 4em 0 3.5em 0;
     text-align: center;
-    color:var(--clr_dark_graishBlue);
-    font-size:clamp(0.8rem,2.5vw,0.9rem);
+    color: var(--clr_dark_graishBlue);
+    font-size: clamp(0.8rem, 2.5vw, 0.9rem);
     border-top: 1px solid #ebebee;
-
   }
 
   .avatar {
@@ -93,7 +109,7 @@ export const StyledHeader = styled(motion.header)`
     border-bottom: 1px solid #ebebee;
   }
 
-  .cartContainer{
+  .cartContainer {
     position: fixed;
     right: 5vw;
     top: 9vh;
@@ -101,67 +117,66 @@ export const StyledHeader = styled(motion.header)`
     flex-direction: column;
     width: 42vh;
     background-color: #fefefe;
-    border-radius:10px;
-    padding:0 0 1.75em 0;
-    box-shadow:0 6px 25px 0 rgba(0, 0, 0, 0.2)
+    border-radius: 10px;
+    padding: 0 0 1.75em 0;
+    box-shadow: 0 6px 25px 0 rgba(0, 0, 0, 0.2);
   }
 
-
-  .card-content{
+  .card-content {
     display: flex;
     flex-direction: column;
     align-items: center;
   }
-  
-  .cart-title >h2{
-    padding:1.5em;
-    font-size:var(--step-0);
+
+  .cart-title > h2 {
+    padding: 1.5em;
+    font-size: var(--step-0);
   }
-  .card-content-top{
+  .card-content-top {
     display: flex;
     align-items: center;
-    padding:1.5em 1em;
+    padding: 1.5em 1em;
     border-top: 1px solid #ebebee;
-    gap:1em;
+    gap: 1em;
   }
 
-  .card-content-top img{
-    height:40px;
-    border-radius:3px;
+  .card-content-top img {
+    height: 40px;
+    border-radius: 3px;
   }
-  .card-icon img{
-    height:15px;
+  .card-icon img {
+    height: 15px;
   }
 
-  .card-info{
+  .card-info {
     display: flex;
-    flex-wrap:wrap;
-    gap:0.4em;
+    flex-wrap: wrap;
+    gap: 0.4em;
   }
 
-  .card-info > :first-child{
-    width:100%;
-    font-size:clamp(0.8em,2.5vw,0.9rem);
-    color:var(--clr_gb);
-    font-weight:var(--fw_400)
+  .card-info > :first-child {
+    width: 100%;
+    font-size: clamp(0.8em, 2.5vw, 0.9rem);
+    color: var(--clr_gb);
+    font-weight: var(--fw_400);
   }
 
-  .card-info >:nth-child(2){
+  .card-info > :nth-child(2) {
     display: flex;
-    font-size:clamp(0.6em,2.5vw,0.75rem);
-    gap:0.5em;
-    color:var(--clr_gb);
-    font-weight:var(--fw_400)
+    font-size: clamp(0.6em, 2.5vw, 0.75rem);
+    gap: 0.5em;
+    color: var(--clr_gb);
+    font-weight: var(--fw_400);
   }
 
-  button{
-    padding:1em 1.5em;
-    width:90%;
-    border-radius:5px;
-    background-color:var(--clr_orange);
-    color:#ffffff;
-    text-align:center;
-    border:none;
+  button {
+    padding: 1em 1.5em;
+    width: 90%;
+    border-radius: 5px;
+    background-color: var(--clr_orange);
+    color: #ffffff;
+    text-align: center;
+    border: none;
   }
 
   .menu-icon,
@@ -236,7 +251,7 @@ export const StyledActiveNavbar = styled(motion.div)`
       border: none;
     }
   }
-  @media (min-width:768px){
-      display: none;
+  @media (min-width: 768px) {
+    display: none;
   }
 `;
