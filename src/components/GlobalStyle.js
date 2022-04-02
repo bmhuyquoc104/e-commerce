@@ -44,6 +44,7 @@ export const GlobalStyle = createGlobalStyle`
     display:flex;
     justify-content:center;
     align-items:center;
+    flex-direction: column;
 }
 
 
@@ -52,6 +53,8 @@ body{
     background-color:${({theme}) => theme.body.backgroundColor};
     color: ${({theme}) => theme.body.color};
     width:max(100%,350px);
+   
 }
+
 
 `;

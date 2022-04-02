@@ -3,6 +3,7 @@ import Header from "./components/Header/Header";
 import { ThemeProvider } from "styled-components";
 import { lightTheme, darkTheme } from "./components/Theme/Theme";
 import { useTheme } from "./hooks/useTheme";
+import Main from './components/Main/Main'
 function App() {
   const [theme, ThemeTogglers, toggleSwitchThemeIcon] = useTheme();
  
@@ -17,6 +18,7 @@ function App() {
           themeToggler={ThemeTogglers}
           toggleSwitchThemeIcon={toggleSwitchThemeIcon}
         />
+        <Main/>
       </ThemeProvider>
     </>
   );
