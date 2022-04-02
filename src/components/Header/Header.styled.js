@@ -7,15 +7,15 @@ import { SunFill } from "@styled-icons/bootstrap/SunFill";
 const GreyBlueMoon = styled(MoonStarsFill)`
   color: var(--clr_gb);
   width: 100%;
-  height: 40px;
+  height: 35px;
 `;
 const OrangeSunFill = styled(SunFill)`
   color: var(--clr_orange);
   width: 100%;
-  height: 40px;
+  height: 35px;
 `;
 
-export {GreyBlueMoon,OrangeSunFill}
+export { GreyBlueMoon, OrangeSunFill };
 
 export const StyledHeader = styled(motion.header)`
   display: flex;
@@ -24,7 +24,7 @@ export const StyledHeader = styled(motion.header)`
   align-items: center;
   justify-content: space-between;
   width: 80%;
-  background-color: #fefefe;
+  background-color: ${({ theme }) => theme.header.backgroundColor};
 
   & > :nth-child(2) {
     display: flex;
@@ -39,14 +39,15 @@ export const StyledHeader = styled(motion.header)`
 
   li {
     list-style-type: none;
-    color: var(--clr_gb);
+    /* color: var(--clr_gb); */
+    color: ${({ theme }) => theme.header.li.color};
     font-size: var(--step-0);
     border: 2px solid transparent;
     padding: 0.5em 0 2em 0;
     :hover {
       cursor: pointer;
       border-bottom: 2px solid var(--clr_orange);
-      color: var(--clr_b);
+      color: ${({ theme }) => theme.header.li.hv_color};
     }
   }
   .push-right {
@@ -117,9 +118,11 @@ export const StyledHeader = styled(motion.header)`
     flex-direction: column;
     width: 42vh;
     background-color: #fefefe;
+    background-color: ${({ theme }) =>
+      theme.header.cartContainer.backgroundColor};
     border-radius: 10px;
     padding: 0 0 1.75em 0;
-    box-shadow: 0 6px 25px 0 rgba(0, 0, 0, 0.2);
+    box-shadow: 0 6px 25px 0 ${({ theme }) => theme.header.cartContainer.border};
   }
 
   .card-content {
@@ -131,6 +134,7 @@ export const StyledHeader = styled(motion.header)`
   .cart-title > h2 {
     padding: 1.5em;
     font-size: var(--step-0);
+    color: ${({ theme }) => theme.header.cartTitle.color};
   }
   .card-content-top {
     display: flex;
@@ -181,28 +185,39 @@ export const StyledHeader = styled(motion.header)`
 
   .menu-icon,
   .logo-mobile,
-  .mobile-ul {
+  .mobile-ul,
+  .push-right.mobile {
     display: none;
   }
 
-  @media (max-width: 940px) {
+  @media (max-width: 1026px) {
     width: 100%;
+    gap: 1em;
+    .push-right.desktop {
+      display: none;
+    }
+    .push-right.mobile {
+      display: block;
+    }
   }
+
   @media (max-width: 768px) {
     justify-content: revert;
     align-items: center;
     padding: 0.5em 2em;
-    gap: 1em;
-    width: max(100%, 350px);
+    gap: 0.5em;
+    width: max(100%, 300px);
     & > :first-child {
       display: none;
     }
     .decorative,
+    .push-right.desktop,
     .desktop-ul {
       display: none;
     }
     .menu-icon,
     .mobile-ul,
+    .push-right.mobile,
     .logo-mobile {
       display: block;
       padding: 0.5em 0 2em 0;
@@ -217,7 +232,14 @@ export const StyledHeader = styled(motion.header)`
       padding: 0;
     }
     .avatar img {
-      height: 25px;
+      height: 35px;
+    }
+    .push-right img {
+      height: 22px;
+    }
+    .push-right .item-quantities {
+      top: -2px;
+      left: 10px;
     }
   }
 `;
@@ -225,7 +247,7 @@ export const StyledActiveNavbar = styled(motion.div)`
   min-height: 100vh;
   display: flex;
   width: 60%;
-  background-color: var(--clr_w);
+  background-color: ${({theme}) => theme.activeHeader.backgroundColor};
   gap: 3em;
   flex-direction: column;
   padding: 1.5em 2em;
@@ -244,13 +266,14 @@ export const StyledActiveNavbar = styled(motion.div)`
 
   li {
     list-style-type: none;
-    color: var(--cl_b);
+    color: ${({theme}) => theme.activeHeader.li.color};
     font-weight: var(--fw_700);
     border: none;
     :hover {
       border: none;
     }
   }
+
   @media (min-width: 768px) {
     display: none;
   }

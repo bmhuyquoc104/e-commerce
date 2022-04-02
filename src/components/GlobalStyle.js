@@ -49,7 +49,8 @@ export const GlobalStyle = createGlobalStyle`
 
 body{
     min-height:100vh;
-    background-color:var(--clr_w);
+    background-color:${({theme}) => theme.body.backgroundColor};
+    color: ${({theme}) => theme.body.color};
     width:max(100%,350px);
 }
 

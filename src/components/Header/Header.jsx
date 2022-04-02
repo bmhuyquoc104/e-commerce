@@ -9,7 +9,7 @@ import {
 import { AbsoluteFlexContainer } from "../Flex/Flex.styled";
 import { motion, AnimatePresence } from "framer-motion";
 
-const Header = ({ themeToggler ,toggleSwitchThemeIcon}) => {
+const Header = ({ themeToggler, toggleSwitchThemeIcon }) => {
   const [toggleMenu, setToggleMenu] = useState(false);
   const [toggleCart, setToggleCart] = useState(false);
   const cardQuantity = 1;
@@ -51,7 +51,7 @@ const Header = ({ themeToggler ,toggleSwitchThemeIcon}) => {
         <li>Women</li>
         <li>About</li>
         <li>Contact</li>
-        <li className="push-right">
+        <li className="push-right desktop">
           {!toggleSwitchThemeIcon ? (
             <OrangeSunFill onClick={themeToggler} />
           ) : (
@@ -90,6 +90,13 @@ const Header = ({ themeToggler ,toggleSwitchThemeIcon}) => {
       />
       <img className="logo-mobile" src={imageResoucres.Logo} alt="Logo Icon" />
 
+      <li className="push-right mobile">
+        {!toggleSwitchThemeIcon ? (
+          <OrangeSunFill onClick={themeToggler} />
+        ) : (
+          <GreyBlueMoon onClick={themeToggler} />
+        )}
+      </li>
       <ul className="mobile-ul">
         <li className="push-right">
           {cardQuantity === 0 ? (

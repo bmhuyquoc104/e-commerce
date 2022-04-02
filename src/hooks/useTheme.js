@@ -1,7 +1,7 @@
 import {useState, useEffect} from 'react'
 
 export const useTheme = () => {
-  const [theme,setTheme] = useState('lightTheme'); 
+    const [theme,setTheme] = useState('lightTheme');
   const [toggleSwitchThemeIcon, setToggleSwitchThemeIcon] = useState(false);
 
   const setMode = mode => {
@@ -10,8 +10,7 @@ export const useTheme = () => {
   }
 
   const ThemeTogglers = () =>{
-      theme === 'lightTheme' ? setMode('darkMode') : setMode('lightMode');
-      console.log("alalal")
+    theme === 'lightTheme' ? setMode('darkTheme') : setMode('lightTheme');
       setToggleSwitchThemeIcon(!toggleSwitchThemeIcon);
   }
 
