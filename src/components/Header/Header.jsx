@@ -6,7 +6,7 @@ import { motion, AnimatePresence } from "framer-motion";
 
 const Header = () => {
   const [toggleMenu, setToggleMenu] = useState(false);
-
+  const [toggleCart, setToggleCart] = useState(false);
   const ulVariant = {
     hidden: {
       opacity: 0,
@@ -35,7 +35,7 @@ const Header = () => {
   return (
     <StyledHeader
       initial={{ opacity: 0 }}
-      animate={{ opacity: 1, transition: {duration: 1}}}
+      animate={{ opacity: 1, transition: { duration: 1 } }}
     >
       {/* Desktop display: max-width:768px */}
       <img className="desktop-logo" src={imageResoucres.Logo} alt="Logo Icon" />
@@ -46,7 +46,7 @@ const Header = () => {
         <li>About</li>
         <li>Contact</li>
         <li className="push-right">
-          <img src={imageResoucres.CartIcon} alt="Cart Icon" />
+          <img onClick = {() => {setToggleCart(!toggleCart)}} src={imageResoucres.CartIcon} alt="Cart Icon" />
         </li>
         <li className="avatar">
           <div>
@@ -67,7 +67,7 @@ const Header = () => {
 
       <ul className="mobile-ul">
         <li className="push-right">
-          <img src={imageResoucres.CartIcon} alt="Cart Icon" />
+          <img  onClick = {() => {setToggleCart(!toggleCart)}} src={imageResoucres.CartIcon} alt="Cart Icon" />
         </li>
         <li className="avatar">
           <div>
@@ -88,7 +88,9 @@ const Header = () => {
                 transition: { type: "spring", duration: 1 },
               }}
               exit={{
-                x: -300,opacity: 0,duration:0.1
+                x: -300,
+                opacity: 0,
+                duration: 0.1,
               }}
             >
               <img
@@ -114,6 +116,34 @@ const Header = () => {
           </AbsoluteFlexContainer>
         )}
       </AnimatePresence>
+
+      {toggleCart && (
+        <div className="cartContainer">
+          <div className="cart-title">
+            <h2>Cart</h2>
+            <div className="card-content">
+              <div className="card-content-top">
+                <div className="card-image">
+                  <img src={imageResoucres.Product1} alt="Sneaker 1" />
+                </div>
+
+                <div className="card-info">
+                  <h3>Fall Limited Edition Sneaker</h3>
+                  <div>
+                    <h4>$125.000</h4>
+                    <h4 className="quantity">3</h4>
+                    <h4 className="total">$375.000</h4>
+                  </div>
+                </div>
+                <div className="card-icon">
+                  <img src={imageResoucres.DeleteIcon} alt="Delete icon" />
+                </div>
+              </div>
+              <button>Checkout</button>
+            </div>
+          </div>
+        </div>
+      )}
     </StyledHeader>
   );
 };
