@@ -7,6 +7,7 @@ import { motion, AnimatePresence } from "framer-motion";
 const Header = () => {
   const [toggleMenu, setToggleMenu] = useState(false);
   const [toggleCart, setToggleCart] = useState(false);
+  const cardQuantity = 1;
   const ulVariant = {
     hidden: {
       opacity: 0,
@@ -46,7 +47,18 @@ const Header = () => {
         <li>About</li>
         <li>Contact</li>
         <li className="push-right">
-          <img onClick = {() => {setToggleCart(!toggleCart)}} src={imageResoucres.CartIcon} alt="Cart Icon" />
+          {cardQuantity === 0 ? (
+            <div className="item-quantities"></div>
+          ) : (
+            <div className="item-quantities">{cardQuantity}</div>
+          )}
+          <img
+            onClick={() => {
+              setToggleCart(!toggleCart);
+            }}
+            src={imageResoucres.CartIcon}
+            alt="Cart Icon"
+          />
         </li>
         <li className="avatar">
           <div>
@@ -67,7 +79,18 @@ const Header = () => {
 
       <ul className="mobile-ul">
         <li className="push-right">
-          <img  onClick = {() => {setToggleCart(!toggleCart)}} src={imageResoucres.CartIcon} alt="Cart Icon" />
+          {cardQuantity === 0 ? (
+            <div className="item-quantities"></div>
+          ) : (
+            <div className="item-quantities">{cardQuantity}</div>
+          )}
+          <img
+            onClick={() => {
+              setToggleCart(!toggleCart);
+            }}
+            src={imageResoucres.CartIcon}
+            alt="Cart Icon"
+          />
         </li>
         <li className="avatar">
           <div>
@@ -121,26 +144,32 @@ const Header = () => {
         <div className="cartContainer">
           <div className="cart-title">
             <h2>Cart</h2>
-            <div className="card-content">
-              <div className="card-content-top">
-                <div className="card-image">
-                  <img src={imageResoucres.Product1} alt="Sneaker 1" />
-                </div>
+            {cardQuantity !== 0 ? (
+              <div className="card-content">
+                <div className="card-content-top">
+                  <div className="card-image">
+                    <img src={imageResoucres.Product1} alt="Sneaker 1" />
+                  </div>
 
-                <div className="card-info">
-                  <h3>Fall Limited Edition Sneaker</h3>
-                  <div>
-                    <h4>$125.000</h4>
-                    <h4 className="quantity">3</h4>
-                    <h4 className="total">$375.000</h4>
+                  <div className="card-info">
+                    <h3>Fall Limited Edition Sneaker</h3>
+                    <div>
+                      <h4>$125.000</h4>
+                      <h4 className="quantity">3</h4>
+                      <h4 className="total">$375.000</h4>
+                    </div>
+                  </div>
+                  <div className="card-icon">
+                    <img src={imageResoucres.DeleteIcon} alt="Delete icon" />
                   </div>
                 </div>
-                <div className="card-icon">
-                  <img src={imageResoucres.DeleteIcon} alt="Delete icon" />
-                </div>
+                <button>Checkout</button>
               </div>
-              <button>Checkout</button>
-            </div>
+            ) : (
+              <div className="card-content-empty">
+                <h4 className="card-content-empty">Your cart is empty</h4>
+              </div>
+            )}
           </div>
         </div>
       )}

@@ -33,11 +33,33 @@ export const StyledHeader = styled(motion.header)`
     }
   }
   .push-right {
+    position: relative;
     margin-left: auto;
     :hover {
       border: 2px solid transparent;
     }
   }
+
+  .push-right .item-quantities{
+    position: absolute;
+    top: 3px;
+    font-size:0.7rem;
+    left:8px;
+    color:var(--clr_w);
+    padding:0 0.8em;
+    border-radius:40px;
+    background-color:var(--clr_orange);
+  }
+
+  .card-content-empty h4{
+    padding:4em 0 3.5em 0;
+    text-align: center;
+    color:var(--clr_dark_graishBlue);
+    font-size:clamp(0.8rem,2.5vw,0.9rem);
+    border-top: 1px solid #ebebee;
+
+  }
+
   .avatar {
     display: flex;
     justify-content: center;
