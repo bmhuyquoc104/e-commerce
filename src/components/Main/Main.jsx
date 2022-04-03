@@ -27,25 +27,31 @@ const Main = () => {
           />
         </div>
       </div>
-      <div className="productInfo">
-        <h2>Sneaker Company</h2>
-        <h1>Fall Limited Edition Sneakers</h1>
+      <div className="product-info">
+        <div className="product-header">
+          <h1>Sneaker Company</h1>
+          <h2>Fall Limited Edition Sneakers</h2>
+        </div>
         <p>
           These low-profile sneakers are your perfect casual wear companion.
           Featuring a durable rubber outer sole, they’ll withstand everything
           the weather can offer.
         </p>
-        <h3>$125.00</h3>
-        <h3>$250.00</h3>
+        <div className="product-price">
+          <h3 className="discount-price">$125.00</h3>
+          <h3 className="discount">50%</h3>
+          <h3 className="original-price">$250.00</h3>
+        </div>
+
         <div className="button-container">
           <div className="operator-container">
             <h3 className="operand">-</h3>
-            <h3>0</h3>
+            <h3 className = "quantity">0</h3>
             <h3 className="operand">+</h3>
           </div>
           <button>
-            <img src={imageResource.CartIcon} alt="Cart icon" />
-            Add to cart
+            <img src={imageResource.CartIconWhite} alt="Cart icon" />
+            <p>Add to cart</p>
           </button>
         </div>
       </div>

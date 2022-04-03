@@ -15,11 +15,11 @@ import MenuIcon from './images/icon-menu.svg'
 import NextIcon from './images/icon-next.svg'
 import PlusIcon from './images/icon-plus.svg'
 import PreviousIcon from './images/icon-previous.svg'
-
+import CartIconWhite from './images/icon-cart-white.svg'
 const imageResoucres = {
     ImageAvatar,ImageProduct1Thumbnail,ImageProduct2Thumbnail,ImageProduct3Thumbnail,ImageProduct4Thumbnail,
     Product1,Product2,Product3,Product4,Logo,
-    CartIcon,CloseIcon,DeleteIcon,MenuIcon,NextIcon,PlusIcon,PreviousIcon
+    CartIcon,CloseIcon,DeleteIcon,MenuIcon,NextIcon,PlusIcon,PreviousIcon,CartIconWhite
 }
 
 export default imageResoucres
