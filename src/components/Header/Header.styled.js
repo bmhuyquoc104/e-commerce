@@ -191,8 +191,11 @@ export const StyledHeader = styled(motion.header)`
   }
 
   @media (max-width: 1026px) {
-    width: 100%;
-    gap: 1em;
+    width: 90%;
+    gap: 0.5em;
+    & > :nth-child(2) {
+      gap: 1em;
+    }
     .push-right.desktop {
       display: none;
     }
@@ -247,7 +250,7 @@ export const StyledActiveNavbar = styled(motion.div)`
   min-height: 100vh;
   display: flex;
   width: 60%;
-  background-color: ${({theme}) => theme.activeHeader.backgroundColor};
+  background-color: ${({ theme }) => theme.activeHeader.backgroundColor};
   gap: 3em;
   flex-direction: column;
   padding: 1.5em 2em;
@@ -266,7 +269,7 @@ export const StyledActiveNavbar = styled(motion.div)`
 
   li {
     list-style-type: none;
-    color: ${({theme}) => theme.activeHeader.li.color};
+    color: ${({ theme }) => theme.activeHeader.li.color};
     font-weight: var(--fw_700);
     border: none;
     :hover {
