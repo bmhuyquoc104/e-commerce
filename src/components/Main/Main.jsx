@@ -6,7 +6,42 @@ const Main = () => {
   const [toggleImage, setToggalImage] = useState(false);
   return (
     <StyledMain>
-      <div className="product-image">
+      {/* Mobile version */}
+
+      <div className="mobile-image">
+        <div className="product-image mobile">
+          <div className="product-feature">
+            <div className="button previous">
+              <svg width="12" height="18" xmlns="http://www.w3.org/2000/svg">
+                <path
+                  d="M11 1 3 9l8 8"
+                  stroke="#1D2026"
+                  strokeWidth="3"
+                  fill="none"
+                  fillRule="evenodd"
+                />
+              </svg>
+            </div>
+
+            <img src={imageResource.Product1} alt="Feature-product-1" />
+
+            <div className="button next">
+              <svg width="13" height="18" xmlns="http://www.w3.org/2000/svg">
+                <path
+                  d="m2 1 8 8-8 8"
+                  stroke="#1D2026"
+                  strokeWidth="3"
+                  fill="none"
+                  fillRule="evenodd"
+                />
+              </svg>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Desltop version */}
+      <div className="product-image desktop">
         <div className="product-feature">
           <img
             onClick={() => setToggalImage(true)}
@@ -34,6 +69,7 @@ const Main = () => {
         </div>
       </div>
       <div className="product-info">
+        {/* Desktop version */}
         <div className="product-header">
           <h1>Sneaker Company</h1>
           <h2>Fall Limited Edition Sneakers</h2>
@@ -43,6 +79,7 @@ const Main = () => {
           Featuring a durable rubber outer sole, they’ll withstand everything
           the weather can offer.
         </p>
+
         <div className="product-price">
           <h3 className="discount-price">$125.00</h3>
           <h3 className="discount">50%</h3>
@@ -85,9 +122,9 @@ const Main = () => {
                     <path
                       d="M11 1 3 9l8 8"
                       stroke="#1D2026"
-                      stroke-width="3"
+                      strokeWidth="3"
                       fill="none"
-                      fill-rule="evenodd"
+                      fillRule="evenodd"
                     />
                   </svg>
                 </div>
@@ -103,9 +140,9 @@ const Main = () => {
                     <path
                       d="m2 1 8 8-8 8"
                       stroke="#1D2026"
-                      stroke-width="3"
+                      strokeWidth="3"
                       fill="none"
-                      fill-rule="evenodd"
+                      fillRule="evenodd"
                     />
                   </svg>
                 </div>

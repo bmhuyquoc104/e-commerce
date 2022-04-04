@@ -6,7 +6,7 @@ export const StyledMainModal = styled.div`
   align-items: center;
   flex-direction: column;
   width: 50%;
-  margin-top:-1.7rem;
+  margin-top: -1.7rem;
   gap: 1em;
   & > * {
     width: 70%;
@@ -22,7 +22,7 @@ export const StyledMainModal = styled.div`
   svg {
     transform: scale(1.2);
   }
- 
+
   & > :nth-child(2) .product-side-container {
     display: flex;
     justify-content: space-around;
@@ -34,31 +34,31 @@ export const StyledMainModal = styled.div`
     border-radius: 10px;
     object-fit: contain;
   }
-  & > :nth-child(2) .product-feature{
+  & > :nth-child(2) .product-feature {
     display: flex;
     position: relative;
     align-items: center;
   }
 
-  & > :nth-child(2) .product-feature .button{
-    border-radius:50%;
-    background-color:var(--clr_w);
+  & > :nth-child(2) .product-feature .button {
+    border-radius: 50%;
+    background-color: var(--clr_w);
     display: flex;
     align-items: center;
     justify-content: center;
-    width:max(10%,50px);
+    width: max(10%, 50px);
     aspect-ratio: 1/1;
   }
-  & > :nth-child(2) .product-feature .button.previous{
-    position:absolute;
-    z-index:1;
-    left:-1.5em;
+  & > :nth-child(2) .product-feature .button.previous {
+    position: absolute;
+    z-index: 1;
+    left: -1.5em;
   }
 
-  & > :nth-child(2) .product-feature .button.next{
-    position:absolute;
-    z-index:1;
-    right:-1.5em;
+  & > :nth-child(2) .product-feature .button.next {
+    position: absolute;
+    z-index: 1;
+    right: -1.5em;
   }
 `;
 
@@ -185,6 +185,51 @@ export const StyledMain = styled.main`
     gap: 1em;
     flex: 1.6;
   }
+
+  .mobile-image {
+    width: 100%;
+    display: none;
+
+  }
+  .mobile-image >*{
+    width:100%;
+  }
+  & > :nth-child(1) .product-feature {
+    display: flex;
+    position: relative;
+    width:100%;
+    height: 24em;
+    align-items: center;
+  }
+
+  & > :nth-child(1) .product-feature img {
+    border-radius: 0;
+    width: 100%;
+    object-fit: cover;
+    height: max(100%,15em);
+  }
+
+  & > :nth-child(1) .product-feature .button {
+    border-radius: 50%;
+    background-color: var(--clr_w);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: max(10%, 50px);
+    aspect-ratio: 1/1;
+  }
+  & > :nth-child(1) .product-feature .button.previous {
+    position: absolute;
+    z-index: 1;
+    left: 1.5em;
+  }
+
+  & > :nth-child(1) .product-feature .button.next {
+    position: absolute;
+    z-index: 1;
+    right: 1.5em;
+  }
+
   .button-container button img {
     height: 15px;
     object-fit: cover;
@@ -198,9 +243,14 @@ export const StyledMain = styled.main`
   }
   @media (max-width: 660px) {
     flex-direction: column;
-    width: max(100%, 500px);
-    .product-image {
+    padding: 0;
+    width: max(100%, 375px);
+    .mobile-image {
+      display: flex;
+    }
+    .product-image.desktop {
       display: none;
+      
     }
     .product-info {
     }
@@ -235,9 +285,11 @@ export const StyledMain = styled.main`
     }
   }
   @media (max-width: 520px) {
-    padding: 2em 3em;
+
     .product-info {
+      padding:0 3em;
       width: max(100%, 300px);
+      
     }
     .product-info .product-header h2 {
       width: 20ch;
