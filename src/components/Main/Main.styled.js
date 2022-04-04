@@ -1,5 +1,67 @@
 import styled from "styled-components";
 
+export const StyledMainModal = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 50%;
+  margin-top:-1.7rem;
+  gap: 1em;
+  & > * {
+    width: 70%;
+  }
+  & > :first-child {
+    text-align: right;
+  }
+  & > :nth-child(2) {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  svg {
+    transform: scale(1.2);
+  }
+ 
+  & > :nth-child(2) .product-side-container {
+    display: flex;
+    justify-content: space-around;
+    width: 87%;
+  }
+  & > :nth-child(2) .product-side-container img {
+    width: 20%;
+    aspect-ratio: 1/1;
+    border-radius: 10px;
+    object-fit: contain;
+  }
+  & > :nth-child(2) .product-feature{
+    display: flex;
+    position: relative;
+    align-items: center;
+  }
+
+  & > :nth-child(2) .product-feature .button{
+    border-radius:50%;
+    background-color:var(--clr_w);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width:max(10%,50px);
+    aspect-ratio: 1/1;
+  }
+  & > :nth-child(2) .product-feature .button.previous{
+    position:absolute;
+    z-index:1;
+    left:-1.5em;
+  }
+
+  & > :nth-child(2) .product-feature .button.next{
+    position:absolute;
+    z-index:1;
+    right:-1.5em;
+  }
+`;
+
 export const StyledMain = styled.main`
   width: max(70%, 650px);
   display: flex;
@@ -143,9 +205,8 @@ export const StyledMain = styled.main`
     .product-info {
     }
     .product-info .product-header h2 {
-      width: 25ch;    
+      width: 25ch;
       font-size: var(--step-3);
-
     }
     .product-info p {
       width: 56ch;
@@ -163,7 +224,7 @@ export const StyledMain = styled.main`
     .button-container > * {
       width: 100%;
     }
-    .discount-price{
+    .discount-price {
       font-size: var(--step-2);
     }
     .operator-container {
@@ -181,14 +242,12 @@ export const StyledMain = styled.main`
     .product-info .product-header h2 {
       width: 20ch;
       font-size: var(--step-4);
-
     }
     .product-info p {
       width: 40ch;
     }
-    .discount-price{
+    .discount-price {
       font-size: var(--step-3);
     }
   }
-  
 `;
