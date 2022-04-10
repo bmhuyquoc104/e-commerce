@@ -13,6 +13,7 @@ const Main = () => {
     imageResource.Product4,
   ];
 
+
   // Use use state to control the index of the image array
   const [index, setActiveStep] = useState(0);
 
@@ -29,6 +30,7 @@ const Main = () => {
     setActiveStep((prevActiveStep) => prevActiveStep - 1);
   };
 
+  // Assign variant for button and path to animate both when hover the button
   const buttonVariant = {
     hover: {
       cursor: "pointer",

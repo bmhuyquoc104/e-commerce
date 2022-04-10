@@ -114,6 +114,7 @@ export const StyledHeader = styled(motion.header)`
     position: fixed;
     right: 5vw;
     top: 9vh;
+    z-index: 2;
     display: flex;
     flex-direction: column;
     width: 42vh;
@@ -210,6 +211,7 @@ export const StyledHeader = styled(motion.header)`
     padding: 0.5em 2em;
     gap: 0.5em;
     width: max(100%, 300px);
+
     & > :first-child {
       display: none;
     }
@@ -223,7 +225,6 @@ export const StyledHeader = styled(motion.header)`
     .push-right.mobile,
     .logo-mobile {
       display: block;
-      padding: 0.5em 0 2em 0;
     }
     .mobile-ul {
       display: flex;
@@ -243,6 +244,17 @@ export const StyledHeader = styled(motion.header)`
     .push-right .item-quantities {
       top: -2px;
       left: 10px;
+    }
+  }
+
+  @media (max-width: 660px) {
+    .cartContainer {
+      right: 0;
+      left: 50%;
+      transform: translate(-50%, 0%);
+      top: 9vh;
+      z-index: 2;
+      width: 95%;
     }
   }
 `;

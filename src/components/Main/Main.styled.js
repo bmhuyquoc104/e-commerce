@@ -199,7 +199,7 @@ export const StyledMain = styled.main`
     display: flex;
     position: relative;
     width:100%;
-    height: 24em;
+    height: 15em;
     align-items: center;
   }
 
@@ -207,7 +207,7 @@ export const StyledMain = styled.main`
     border-radius: 0;
     width: 100%;
     object-fit: cover;
-    height: max(100%,15em);
+    height: max(100%,10vh);
   }
 
   & > :nth-child(1) .product-feature .button {
