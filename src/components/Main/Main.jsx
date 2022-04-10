@@ -1,11 +1,11 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import imageResource from "../../assets/imageResoucres";
 import { StyledMain, StyledMainModal } from "./Main.styled";
 import { AbsoluteFlexContainerPC } from "../Flex/Flex.styled";
+import { motion } from "framer-motion";
 const Main = () => {
   const [toggleImage, setToggalImage] = useState(false);
   // Initialize image arr
-
   const imageArr = [
     imageResource.Product1,
     imageResource.Product2,
@@ -14,7 +14,6 @@ const Main = () => {
   ];
 
   // Use use state to control the index of the image array
-
   const [index, setActiveStep] = useState(0);
 
   // Declare the size for the image array
@@ -30,6 +29,19 @@ const Main = () => {
     setActiveStep((prevActiveStep) => prevActiveStep - 1);
   };
 
+  const buttonVariant = {
+    hover: {
+      cursor: "pointer",
+    },
+  };
+
+  const pathVariants = {
+    hover: {
+      stroke: `var(--clr_orange)`,
+      cursor: "pointer",
+    },
+  };
+
   return (
     <StyledMain>
       {/* Mobile version */}
@@ -37,39 +49,53 @@ const Main = () => {
       <div className="mobile-image">
         <div className="product-image mobile">
           <div className="product-feature">
-            <button
+            <motion.button
               onClick={goToPreviousPicture}
               disabled={index === 0}
+              variants={buttonVariant}
               className="button previous"
+              whileHover="hover"
             >
               <svg width="12" height="18" xmlns="http://www.w3.org/2000/svg">
-                <path
+                <motion.path
                   d="M11 1 3 9l8 8"
                   stroke="#13161b"
+                  whileHover={{
+                    stroke: `var(--clr_orange)`,
+                    cursor: "pointer",
+                  }}
+                  variants={pathVariants}
                   strokeWidth="3"
                   fill="none"
                   fillRule="evenodd"
                 />
               </svg>
-            </button>
+            </motion.button>
 
             <img src={imageArr[index]} alt="Feature-product-1" />
 
-            <button
+            <motion.button
+              variants={buttonVariant}
+              whileHover="hover"
               onClick={goToNextPicture}
               disabled={index === imageArrSize - 1}
               className="button next"
             >
               <svg width="13" height="18" xmlns="http://www.w3.org/2000/svg">
-                <path
+                <motion.path
+                  variants={pathVariants}
                   d="m2 1 8 8-8 8"
                   stroke="#1D2026"
                   strokeWidth="3"
+                  whileHover={{
+                    stroke: `var(--clr_orange)`,
+                    cursor: "pointer",
+                  }}
                   fill="none"
                   fillRule="evenodd"
                 />
               </svg>
-            </button>
+            </motion.button>
           </div>
         </div>
       </div>
@@ -138,8 +164,9 @@ const Main = () => {
           <StyledMainModal>
             <div onClick={() => setToggalImage(false)}>
               <svg width="14" height="15" xmlns="http://www.w3.org/2000/svg">
-                <path
+                <motion.path
                   d="m11.596.782 2.122 2.122L9.12 7.499l4.597 4.597-2.122 2.122L7 9.62l-4.595 4.597-2.122-2.122L4.878 7.5.282 2.904 2.404.782l4.595 4.596L11.596.782Z"
+                  whileHover={{ fill: `var(--clr_orange)`, cursor: "pointer" }}
                   fill="#ffffff"
                   fillRule="evenodd"
                 />
@@ -147,7 +174,9 @@ const Main = () => {
             </div>
             <div className="product-image">
               <div className="product-feature">
-                <button
+                <motion.button
+                  variants={buttonVariant}
+                  whileHover="hover"
                   onClick={goToPreviousPicture}
                   disabled={index === 0}
                   className="button previous"
@@ -157,7 +186,8 @@ const Main = () => {
                     height="18"
                     xmlns="http://www.w3.org/2000/svg"
                   >
-                    <path
+                    <motion.path
+                      variants={pathVariants}
                       d="M11 1 3 9l8 8"
                       stroke="#1D2026"
                       strokeWidth="3"
@@ -165,11 +195,13 @@ const Main = () => {
                       fillRule="evenodd"
                     />
                   </svg>
-                </button>
+                </motion.button>
 
                 <img src={imageArr[index]} alt="Feature-product-1" />
 
-                <button
+                <motion.button
+                  variants={buttonVariant}
+                  whileHover="hover"
                   className="button next"
                   onClick={goToNextPicture}
                   disabled={index === imageArrSize - 1}
@@ -179,15 +211,20 @@ const Main = () => {
                     height="18"
                     xmlns="http://www.w3.org/2000/svg"
                   >
-                    <path
+                    <motion.path
+                      variants={pathVariants}
                       d="m2 1 8 8-8 8"
                       stroke="#1D2026"
                       strokeWidth="3"
+                      whileHover={{
+                        stroke: `var(--clr_orange)`,
+                        cursor: "pointer",
+                      }}
                       fill="none"
                       fillRule="evenodd"
                     />
                   </svg>
-                </button>
+                </motion.button>
               </div>
               <div className="product-side-container">
                 <img
