@@ -1,9 +1,56 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import imageResource from "../../assets/imageResoucres";
 import { StyledMain, StyledMainModal } from "./Main.styled";
 import { AbsoluteFlexContainerPC } from "../Flex/Flex.styled";
 const Main = () => {
   const [toggleImage, setToggalImage] = useState(false);
+  // Initialize image arr
+
+  const [imageArr, setImageArr] = useState([
+    imageResource.Product1,
+    imageResource.Product2,
+    imageResource.Product3,
+    imageResource.Product4,
+  ]);
+
+  const [productFeature, setProductFeature] = useState(imageArr[0]);
+
+  // Declare the size for the image array
+  const imageArrSize = imageArr.length;
+
+  // Use use state to control the index of the image array
+  const [index, setActiveStep] = useState(0);
+
+  // Switch to next image 
+  const goToNextPicture = () => {
+    setActiveStep((prevActiveStep) => prevActiveStep + 1);
+  };
+
+  // Switch to previous image
+  const goToPreviousPicture = () => {
+    setActiveStep((prevActiveStep) => prevActiveStep - 1);
+  }
+
+  // Swipe image function
+  const swipeImage = (arr) => {
+    console.log(arr.length);
+    let sliceElement = arr.slice(0, 1);
+    let remainingElement = arr.slice(1, arr.length);
+    arr = [...remainingElement, sliceElement];
+    setImageArr([...remainingElement, sliceElement]);
+    setProductFeature(arr[0]);
+  };
+
+  const swipeImageBackward = (arr) => {
+    let sliceElement = arr.slice(-1);
+    console.log(sliceElement);
+    let remainingElement = arr.slice(0, 3);
+    console.log(remainingElement);
+    arr = [sliceElement, ...remainingElement];
+    setImageArr([sliceElement, ...remainingElement]);
+    setProductFeature(arr[0]);
+  };
+
   return (
     <StyledMain>
       {/* Mobile version */}
@@ -45,7 +92,7 @@ const Main = () => {
         <div className="product-feature">
           <img
             onClick={() => setToggalImage(true)}
-            src={imageResource.Product1}
+            src={imageArr[index]}
             alt="Feature-product-1"
           />
         </div>
@@ -107,13 +154,13 @@ const Main = () => {
                 <path
                   d="m11.596.782 2.122 2.122L9.12 7.499l4.597 4.597-2.122 2.122L7 9.62l-4.595 4.597-2.122-2.122L4.878 7.5.282 2.904 2.404.782l4.595 4.596L11.596.782Z"
                   fill="#ffffff"
-                  fill-rule="evenodd"
+                  fillRule="evenodd"
                 />
               </svg>
             </div>
             <div className="product-image">
               <div className="product-feature">
-                <div className="button previous">
+                <button onClick ={goToPreviousPicture} disabled = {index === 0} className="button previous">
                   <svg
                     width="12"
                     height="18"
@@ -127,11 +174,15 @@ const Main = () => {
                       fillRule="evenodd"
                     />
                   </svg>
-                </div>
+                </button>
 
-                <img src={imageResource.Product1} alt="Feature-product-1" />
+                <img src={imageArr[index]} alt="Feature-product-1" />
 
-                <div className="button next">
+                <button
+                  className="button next"
+                  onClick={goToNextPicture}
+                  disabled={index === imageArrSize - 1}
+                >
                   <svg
                     width="13"
                     height="18"
@@ -145,7 +196,7 @@ const Main = () => {
                       fillRule="evenodd"
                     />
                   </svg>
-                </div>
+                </button>
               </div>
               <div className="product-side-container">
                 <img
