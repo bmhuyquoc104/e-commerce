@@ -6,22 +6,21 @@ const Main = () => {
   const [toggleImage, setToggalImage] = useState(false);
   // Initialize image arr
 
-  const [imageArr, setImageArr] = useState([
+  const imageArr = [
     imageResource.Product1,
     imageResource.Product2,
     imageResource.Product3,
     imageResource.Product4,
-  ]);
+  ];
 
-  const [productFeature, setProductFeature] = useState(imageArr[0]);
+  // Use use state to control the index of the image array
+
+  const [index, setActiveStep] = useState(0);
 
   // Declare the size for the image array
   const imageArrSize = imageArr.length;
 
-  // Use use state to control the index of the image array
-  const [index, setActiveStep] = useState(0);
-
-  // Switch to next image 
+  // Switch to next image
   const goToNextPicture = () => {
     setActiveStep((prevActiveStep) => prevActiveStep + 1);
   };
@@ -29,26 +28,6 @@ const Main = () => {
   // Switch to previous image
   const goToPreviousPicture = () => {
     setActiveStep((prevActiveStep) => prevActiveStep - 1);
-  }
-
-  // Swipe image function
-  const swipeImage = (arr) => {
-    console.log(arr.length);
-    let sliceElement = arr.slice(0, 1);
-    let remainingElement = arr.slice(1, arr.length);
-    arr = [...remainingElement, sliceElement];
-    setImageArr([...remainingElement, sliceElement]);
-    setProductFeature(arr[0]);
-  };
-
-  const swipeImageBackward = (arr) => {
-    let sliceElement = arr.slice(-1);
-    console.log(sliceElement);
-    let remainingElement = arr.slice(0, 3);
-    console.log(remainingElement);
-    arr = [sliceElement, ...remainingElement];
-    setImageArr([sliceElement, ...remainingElement]);
-    setProductFeature(arr[0]);
   };
 
   return (
@@ -58,21 +37,29 @@ const Main = () => {
       <div className="mobile-image">
         <div className="product-image mobile">
           <div className="product-feature">
-            <div className="button previous">
+            <button
+              onClick={goToPreviousPicture}
+              disabled={index === 0}
+              className="button previous"
+            >
               <svg width="12" height="18" xmlns="http://www.w3.org/2000/svg">
                 <path
                   d="M11 1 3 9l8 8"
-                  stroke="#1D2026"
+                  stroke="#13161b"
                   strokeWidth="3"
                   fill="none"
                   fillRule="evenodd"
                 />
               </svg>
-            </div>
+            </button>
 
-            <img src={imageResource.Product1} alt="Feature-product-1" />
+            <img src={imageArr[index]} alt="Feature-product-1" />
 
-            <div className="button next">
+            <button
+              onClick={goToNextPicture}
+              disabled={index === imageArrSize - 1}
+              className="button next"
+            >
               <svg width="13" height="18" xmlns="http://www.w3.org/2000/svg">
                 <path
                   d="m2 1 8 8-8 8"
@@ -82,7 +69,7 @@ const Main = () => {
                   fillRule="evenodd"
                 />
               </svg>
-            </div>
+            </button>
           </div>
         </div>
       </div>
@@ -160,7 +147,11 @@ const Main = () => {
             </div>
             <div className="product-image">
               <div className="product-feature">
-                <button onClick ={goToPreviousPicture} disabled = {index === 0} className="button previous">
+                <button
+                  onClick={goToPreviousPicture}
+                  disabled={index === 0}
+                  className="button previous"
+                >
                   <svg
                     width="12"
                     height="18"

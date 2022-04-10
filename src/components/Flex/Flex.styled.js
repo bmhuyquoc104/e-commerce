@@ -23,6 +23,6 @@ left: 0;
 width: 100%;
 background-color: ${({theme}) => theme.flex.backgroundColor};
 min-height: 100vh;
-z-index: 1;
+z-index:1;
 
 `;

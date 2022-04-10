@@ -44,6 +44,7 @@ export const StyledMainModal = styled.div`
     border-radius: 50%;
     background-color: var(--clr_w);
     display: flex;
+    border:none;
     align-items: center;
     justify-content: center;
     width: max(10%, 50px);
@@ -214,19 +215,18 @@ export const StyledMain = styled.main`
     background-color: var(--clr_w);
     display: flex;
     align-items: center;
+    border:none;
     justify-content: center;
     width: max(10%, 50px);
     aspect-ratio: 1/1;
   }
   & > :nth-child(1) .product-feature .button.previous {
     position: absolute;
-    z-index: 1;
     left: 1.5em;
   }
 
   & > :nth-child(1) .product-feature .button.next {
     position: absolute;
-    z-index: 1;
     right: 1.5em;
   }
 
