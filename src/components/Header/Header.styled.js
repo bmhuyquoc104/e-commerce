@@ -253,7 +253,6 @@ export const StyledHeader = styled(motion.header)`
       left: 50%;
       transform: translate(-50%, 0%);
       top: 9vh;
-      z-index: 2;
       width: 95%;
     }
   }

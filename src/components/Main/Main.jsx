@@ -13,6 +13,12 @@ const Main = () => {
     imageResource.Product4,
   ];
 
+  const thumbNailArr = [
+    imageResource.ImageProduct1Thumbnail,
+    imageResource.ImageProduct2Thumbnail,
+    imageResource.ImageProduct3Thumbnail,
+    imageResource.ImageProduct4Thumbnail,
+  ];
 
   // Use use state to control the index of the image array
   const [index, setActiveStep] = useState(0);
@@ -41,6 +47,12 @@ const Main = () => {
     hover: {
       stroke: `var(--clr_orange)`,
       cursor: "pointer",
+    },
+  };
+
+  const decorationVariants = {
+    hover: {
+      display: "block",
     },
   };
 
@@ -112,22 +124,36 @@ const Main = () => {
           />
         </div>
         <div className="product-side-container">
-          <img
-            src={imageResource.ImageProduct1Thumbnail}
-            alt="Thumbnail product 1"
-          />
-          <img
-            src={imageResource.ImageProduct2Thumbnail}
-            alt="Thumbnail product 2"
-          />
-          <img
-            src={imageResource.ImageProduct3Thumbnail}
-            alt="Thumbnail product 3"
-          />
-          <img
-            src={imageResource.ImageProduct4Thumbnail}
-            alt="Thumbnail product 4"
-          />
+          <div className="product-side-container">
+            {thumbNailArr.map((element, i) => (
+              <div
+                onClick={() => {
+                  setActiveStep(i);
+                }}
+                key={i}
+                className="thumbnail-container"
+              >
+                {index === i ? (
+                  <>
+                    <div
+                      style={{ backgroundColor: "rgba(255,255,255,0.6)" }}
+                      className="decoration"
+                    ></div>
+                    <img src={element} alt="Thumbnail product" />
+                  </>
+                ) : (
+                  <>
+                    <div className="decoration"></div>
+                    <img
+                      style={{ outline: "none" }}
+                      src={element}
+                      alt="Thumbnail product"
+                    />
+                  </>
+                )}
+              </div>
+            ))}
+          </div>
         </div>
       </div>
       <div className="product-info">
@@ -229,22 +255,36 @@ const Main = () => {
                 </motion.button>
               </div>
               <div className="product-side-container">
-                <img
-                  src={imageResource.ImageProduct1Thumbnail}
-                  alt="Thumbnail product 1"
-                />
-                <img
-                  src={imageResource.ImageProduct2Thumbnail}
-                  alt="Thumbnail product 2"
-                />
-                <img
-                  src={imageResource.ImageProduct3Thumbnail}
-                  alt="Thumbnail product 3"
-                />
-                <img
-                  src={imageResource.ImageProduct4Thumbnail}
-                  alt="Thumbnail product 4"
-                />
+                {thumbNailArr.map((element, i) => (
+                  <motion.div
+                    onClick={() => {
+                      setActiveStep(i);
+                    }}
+                    whileHover="hover"
+                    variants={buttonVariant}
+                    key={i}
+                    className="thumbnail-container"
+                  >
+                    {index === i ? (
+                      <>
+                        <div
+                          style={{ backgroundColor: "rgba(255,255,255,0.6)" }}
+                          className="decoration"
+                        ></div>
+                        <img src={element} alt="Thumbnail product" />
+                      </>
+                    ) : (
+                      <>
+                        <div className="decoration"></div>
+                        <img
+                          style={{ outline: "none" }}
+                          src={element}
+                          alt="Thumbnail product"
+                        />
+                      </>
+                    )}
+                  </motion.div>
+                ))}
               </div>
             </div>
           </StyledMainModal>

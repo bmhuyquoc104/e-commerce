@@ -8,6 +8,7 @@ export const StyledMainModal = styled.div`
   width: 50%;
   margin-top: -1.7rem;
   gap: 1em;
+  
   & > * {
     width: 70%;
   }
@@ -86,12 +87,43 @@ export const StyledMain = styled.main`
     justify-content: space-between;
     width: 100%;
   }
-  .product-side-container img {
+
+
+  .product-side-container .thumbnail-container {
     width: 22%;
     aspect-ratio: 1/1;
+    position:relative;
+    :hover{
+      cursor: pointer;
+    }
+    border-radius: 10px;
+  }
+
+  .product-side-container .decoration{
+    position: absolute;
+    top: 0;
+    right:0;
+    bottom:4px;
+    :hover{
+      background-color:rgba(255,255,255,0.6);
+
+    }
+    border-radius: 10px;
+    left: 0;
+    
+  }
+
+ 
+
+  .product-side-container .thumbnail-container img{
+    width: 100%;
+    height: 100%;
     border-radius: 10px;
     object-fit: contain;
+    outline: 2px solid var(--clr_orange);
+
   }
+
   .product-feature img {
     width: 100%;
     aspect-ratio: 1/1;
