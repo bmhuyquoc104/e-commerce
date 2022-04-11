@@ -7,7 +7,7 @@ export const AbsoluteFlexContainer = styled.div`
   width: 100%;
   background-color: ${({theme}) => theme.flex.backgroundColor};
   min-height: 100vh;
-  z-index: 1;
+  z-index: 3;
   @media (min-width:768px){
       display: none;
   }
