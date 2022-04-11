@@ -1,5 +1,6 @@
-import React, { useState } from "react";
+import React, { useState,useContext } from "react";
 import imageResoucres from "../../assets/imageResoucres";
+import { ItemContext } from "../../hooks/useContext";
 import {
   GreyBlueMoon,
   OrangeSunFill,
@@ -13,39 +14,19 @@ const Header = ({ themeToggler, toggleSwitchThemeIcon }) => {
   const [toggleMenu, setToggleMenu] = useState(false);
   const [toggleCart, setToggleCart] = useState(false);
 
-  const itemsInCardArr2 = [
-    {
-      id: 1,
-      quantity: 1,
-      name: "Fall Limited Edition Sneakers",
-      price: "$125.000",
-      totalPrice: "$375.000",
-      image: `${imageResoucres.Product1}`,
-    },
-    {
-      id: 2,
-      quantity: 1,
-      name: "Fall Limited Edition Sneakers",
-      totalPrice: "$125.000",
-      image: `${imageResoucres.Product1}`,
-    },
-  ];
+  // Access to the parent props 
+  const {setItemsArr,itemsArr} = useContext(ItemContext);
+    
+  // Get the arr length for displaying purposes
+  const cardQuantity = itemsArr.length;
 
-  const [itemsInCardArr, setItemsArr] = useState(() => {
-    const localData = localStorage.getItem("item");
-    return localData ? JSON.parse(localData) : itemsInCardArr2;
-  });
-
-  const cardQuantity = itemsInCardArr.length;
-
-
-  
+  // Function to remove the item in the cart by filter out the item
   const handleRemove = (id) => {
-    const newList = itemsInCardArr.filter((item) => item.id !== id);
-
+    const newList = itemsArr.filter((item) => item.id !== id);
     setItemsArr(newList);
   }
 
+  // Variants for ul animate
   const ulVariant = {
     hidden: {
       opacity: 0,
@@ -62,6 +43,7 @@ const Header = ({ themeToggler, toggleSwitchThemeIcon }) => {
     },
   };
 
+  //Variant for li animate
   const liVariant = {
     hidden: {
       opacity: 0,
@@ -199,7 +181,7 @@ const Header = ({ themeToggler, toggleSwitchThemeIcon }) => {
             <h2>Cart</h2>
             {cardQuantity !== 0 ? (
               <div className="card-content">
-                {itemsInCardArr.map((item) => (
+                {itemsArr.map((item) => (
                   <div key={item.id} className="card-content-top">
                     <div className="card-image">
                       <img src={item.image} alt="Sneaker 1" />

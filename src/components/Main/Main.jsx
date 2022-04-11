@@ -1,9 +1,15 @@
-import React, { useState, useReducer } from "react";
+import React, { useState, useReducer, useRef,useContext} from "react";
 import imageResource from "../../assets/imageResoucres";
 import { StyledMain, StyledMainModal } from "./Main.styled";
 import { AbsoluteFlexContainerPC } from "../Flex/Flex.styled";
 import { motion } from "framer-motion";
+import nextId from "react-id-generator";
+import { ItemContext } from "../../hooks/useContext";
 const Main = () => {
+  // Declare useRef to get the current value from DOM elements
+  const priceRef = useRef(null);
+  const nameRef = useRef(null);
+  // Declare useState to toggleFeatureImage
   const [toggleImage, setToggalImage] = useState(false);
   // Initialize image arr
   const imageArr = [
@@ -12,6 +18,8 @@ const Main = () => {
     imageResource.Product3,
     imageResource.Product4,
   ];
+
+  // Initialize thumbNail image arr
 
   const thumbNailArr = [
     imageResource.ImageProduct1Thumbnail,
@@ -31,30 +39,29 @@ const Main = () => {
     setActiveStep((prevActiveStep) => prevActiveStep + 1);
   };
 
-  const initialState = {
-    quantity:0
-  }
-  
-  const quantityReducer = (state,action) =>{
-    switch(action.type){
-      case "ADD" :{
-        return {quantity:state.quantity +1}
+  // Reducer function to manage state by add or substract action
+  const quantityReducer = (state, action) => {
+    switch (action.type) {
+      case "ADD": {
+        return { quantity: state.quantity + 1 };
       }
-      case "SUBSTRACT" :{
-        if (state.quantity > 0){
-        return {quantity:state.quantity -1};
-        }
-        else{
-          return {quantity:0};
+      case "SUBSTRACT": {
+        if (state.quantity > 0) {
+          return { quantity: state.quantity - 1 };
+        } else {
+          return { quantity: 0 };
         }
       }
-      default:{
-        return state
+      default: {
+        return state;
       }
     }
+  };
 
-  }
-  const [quantityState,dispatch] = useReducer(quantityReducer,initialState);
+  // Declare use reducer to manage add and delete  quantities
+  const [quantityState, dispatch] = useReducer(quantityReducer, {
+    quantity: 0,
+  });
 
   // Switch to previous image
   const goToPreviousPicture = () => {
@@ -68,12 +75,46 @@ const Main = () => {
     },
   };
 
+  // Get all item information and add to items arr
+  const addItem = () => {
+    let quantity = quantityState.quantity;
+    let price = priceRef.current.innerText;
+    let id = nextId("item-");
+    let image = imageArr[index];
+    let name = nameRef.current.innerText;
+    let priceFormat = price.slice(1, price.length);
+
+    // Use build-in number format to re format the total price
+    let formatter = new Intl.NumberFormat("en-US", {
+      style: "currency",
+      currency: "USD",
+    });
+    let totalPrice = `${formatter.format(parseFloat(priceFormat) * quantity)}`;
+    // Initialize new add item
+    let newItem = {
+      id: id,
+      price: price,
+      quantity: quantity,
+      totalPrice: totalPrice,
+      image: image,
+      name: name,
+    };
+    quantity > 0 && console.log(newItem);
+    setItemsArr([...itemsArr, newItem]);
+  };
+
+
+
+  // Declare useContext to access to props from parent
+  const {setItemsArr,itemsArr} = useContext(ItemContext);
   const pathVariants = {
     hover: {
       stroke: `var(--clr_orange)`,
       cursor: "pointer",
     },
   };
+
+ 
 
   return (
     <StyledMain>
@@ -179,7 +220,7 @@ const Main = () => {
         {/* Desktop version */}
         <div className="product-header">
           <h1>Sneaker Company</h1>
-          <h2>Fall Limited Edition Sneakers</h2>
+          <h2 ref={nameRef}>Fall Limited Edition Sneakers</h2>
         </div>
         <p>
           These low-profile sneakers are your perfect casual wear companion.
@@ -188,20 +229,29 @@ const Main = () => {
         </p>
 
         <div className="product-price">
-          <h3 className="discount-price">$125.00</h3>
+          <h3 ref={priceRef} className="discount-price">
+            $125.00
+          </h3>
           <h3 className="discount">50%</h3>
           <h3 className="original-price">$250.00</h3>
         </div>
 
         <div className="button-container">
           <div className="operator-container">
-            <h3 onClick = {() => dispatch({type:"SUBSTRACT"})} className="operand">-</h3>
+            <h3
+              onClick={() => dispatch({ type: "SUBSTRACT" })}
+              className="operand"
+            >
+              -
+            </h3>
             <h3 className="quantity">{quantityState.quantity}</h3>
-            <h3 onClick = {() => dispatch({type:"ADD"})}  className="operand">+</h3>
+            <h3 onClick={() => dispatch({ type: "ADD" })} className="operand">
+              +
+            </h3>
           </div>
-          <button>
+          <button onClick={addItem} >
             <img src={imageResource.CartIconWhite} alt="Cart icon" />
-            <p>Add to cart</p>
+            <p >Add to cart</p>
           </button>
         </div>
       </div>

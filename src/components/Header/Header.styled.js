@@ -114,7 +114,7 @@ export const StyledHeader = styled(motion.header)`
     position: fixed;
     right: 5vw;
     top: 9vh;
-    z-index: 2;
+    z-index: 1;
     display: flex;
     flex-direction: column;
     width: 42vh;
@@ -157,6 +157,9 @@ export const StyledHeader = styled(motion.header)`
   }
   .card-icon img {
     height: 15px;
+    :hover{
+      cursor: pointer;
+    }
   }
 
   .card-info {
