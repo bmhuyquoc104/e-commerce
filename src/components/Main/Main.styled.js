@@ -153,17 +153,18 @@ export const StyledMain = styled.main`
   }
 
   .product-info .product-header h2 {
-    color: var(--clr_b);
+    color: ${({theme})=> theme.main.productTitle.color};
     font-size: var(--step-2);
     line-height: 1;
   }
   .product-info p {
-    color: var(--clr_dark_graishBlue);
+    color: ${({theme})=> theme.main.productDescription.color};
     font-size: var(--step--1);
     font-weight: var(--fw_400);
     line-height: 1.75;
   }
   .product-price {
+    color: ${({theme})=> theme.main.productPrice.color};
     display: flex;
     flex-wrap: wrap;
     align-items: center;
@@ -216,7 +217,7 @@ export const StyledMain = styled.main`
     border: none;
     padding: 1em;
     border-radius: 10px;
-    box-shadow: 0 10px 5px 4px var(--clr_paleOrange);
+    box-shadow: ${({theme}) => theme.main.addButton.boxShadow};
     display: flex;
     justify-content: center;
     align-items: center;
