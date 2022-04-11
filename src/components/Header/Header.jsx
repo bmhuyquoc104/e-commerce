@@ -12,7 +12,40 @@ import { motion, AnimatePresence } from "framer-motion";
 const Header = ({ themeToggler, toggleSwitchThemeIcon }) => {
   const [toggleMenu, setToggleMenu] = useState(false);
   const [toggleCart, setToggleCart] = useState(false);
-  const cardQuantity = 1;
+
+  const itemsInCardArr2 = [
+    {
+      id: 1,
+      quantity: 1,
+      name: "Fall Limited Edition Sneakers",
+      price: "$125.000",
+      totalPrice: "$375.000",
+      image: `${imageResoucres.Product1}`,
+    },
+    {
+      id: 2,
+      quantity: 1,
+      name: "Fall Limited Edition Sneakers",
+      totalPrice: "$125.000",
+      image: `${imageResoucres.Product1}`,
+    },
+  ];
+
+  const [itemsInCardArr, setItemsArr] = useState(() => {
+    const localData = localStorage.getItem("item");
+    return localData ? JSON.parse(localData) : itemsInCardArr2;
+  });
+
+  const cardQuantity = itemsInCardArr.length;
+
+
+  
+  const handleRemove = (id) => {
+    const newList = itemsInCardArr.filter((item) => item.id !== id);
+
+    setItemsArr(newList);
+  }
+
   const ulVariant = {
     hidden: {
       opacity: 0,
@@ -166,23 +199,27 @@ const Header = ({ themeToggler, toggleSwitchThemeIcon }) => {
             <h2>Cart</h2>
             {cardQuantity !== 0 ? (
               <div className="card-content">
-                <div className="card-content-top">
-                  <div className="card-image">
-                    <img src={imageResoucres.Product1} alt="Sneaker 1" />
-                  </div>
+                {itemsInCardArr.map((item) => (
+                  <div key={item.id} className="card-content-top">
+                    <div className="card-image">
+                      <img src={item.image} alt="Sneaker 1" />
+                    </div>
 
-                  <div className="card-info">
-                    <h3>Fall Limited Edition Sneaker</h3>
-                    <div>
-                      <h4>$125.000</h4>
-                      <h4 className="quantity">3</h4>
-                      <h4 className="total">$375.000</h4>
+                    <div className="card-info">
+                      <h3>{item.name}</h3>
+                      <div>
+                        <h4>{item.price}</h4>
+                        <h4>x</h4>
+                        <h4 className="quantity">{item.quantity}</h4>
+                        <h4 className="total">{item.totalPrice}</h4>
+                      </div>
+                    </div>
+                    <div onClick={() => handleRemove(item.id)} className="card-icon">
+                      <img src={imageResoucres.DeleteIcon} alt="Delete icon" />
                     </div>
                   </div>
-                  <div className="card-icon">
-                    <img src={imageResoucres.DeleteIcon} alt="Delete icon" />
-                  </div>
-                </div>
+                ))}
+
                 <button>Checkout</button>
               </div>
             ) : (

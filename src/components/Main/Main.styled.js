@@ -192,6 +192,11 @@ export const StyledMain = styled.main`
     gap: 0.5em;
   }
   .operator-container {
+    :hover{
+      cursor: pointer;
+      opacity:0.6;
+
+    }
     display: flex;
     flex: 1;
     align-items: center;
@@ -216,6 +221,10 @@ export const StyledMain = styled.main`
     justify-content: center;
     align-items: center;
     gap: 1em;
+    :hover{
+      cursor: pointer;
+      opacity:0.6;
+    }
     flex: 1.6;
   }
 

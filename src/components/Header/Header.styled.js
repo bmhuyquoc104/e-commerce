@@ -118,6 +118,8 @@ export const StyledHeader = styled(motion.header)`
     display: flex;
     flex-direction: column;
     width: 42vh;
+    height:30vh;
+    overflow:scroll;
     background-color: #fefefe;
     background-color: ${({ theme }) =>
       theme.header.cartContainer.backgroundColor};
@@ -143,6 +145,10 @@ export const StyledHeader = styled(motion.header)`
     padding: 1.5em 1em;
     border-top: 1px solid #ebebee;
     gap: 1em;
+  }
+
+  .total{
+    color:var(--clr_b);
   }
 
   .card-content-top img {

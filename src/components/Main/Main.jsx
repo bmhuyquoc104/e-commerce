@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useReducer } from "react";
 import imageResource from "../../assets/imageResoucres";
 import { StyledMain, StyledMainModal } from "./Main.styled";
 import { AbsoluteFlexContainerPC } from "../Flex/Flex.styled";
@@ -31,6 +31,31 @@ const Main = () => {
     setActiveStep((prevActiveStep) => prevActiveStep + 1);
   };
 
+  const initialState = {
+    quantity:0
+  }
+  
+  const quantityReducer = (state,action) =>{
+    switch(action.type){
+      case "ADD" :{
+        return {quantity:state.quantity +1}
+      }
+      case "SUBSTRACT" :{
+        if (state.quantity > 0){
+        return {quantity:state.quantity -1};
+        }
+        else{
+          return {quantity:0};
+        }
+      }
+      default:{
+        return state
+      }
+    }
+
+  }
+  const [quantityState,dispatch] = useReducer(quantityReducer,initialState);
+
   // Switch to previous image
   const goToPreviousPicture = () => {
     setActiveStep((prevActiveStep) => prevActiveStep - 1);
@@ -47,12 +72,6 @@ const Main = () => {
     hover: {
       stroke: `var(--clr_orange)`,
       cursor: "pointer",
-    },
-  };
-
-  const decorationVariants = {
-    hover: {
-      display: "block",
     },
   };
 
@@ -176,9 +195,9 @@ const Main = () => {
 
         <div className="button-container">
           <div className="operator-container">
-            <h3 className="operand">-</h3>
-            <h3 className="quantity">0</h3>
-            <h3 className="operand">+</h3>
+            <h3 onClick = {() => dispatch({type:"SUBSTRACT"})} className="operand">-</h3>
+            <h3 className="quantity">{quantityState.quantity}</h3>
+            <h3 onClick = {() => dispatch({type:"ADD"})}  className="operand">+</h3>
           </div>
           <button>
             <img src={imageResource.CartIconWhite} alt="Cart icon" />
@@ -265,6 +284,7 @@ const Main = () => {
                     key={i}
                     className="thumbnail-container"
                   >
+                    {/* Render depend on the current index */}
                     {index === i ? (
                       <>
                         <div
