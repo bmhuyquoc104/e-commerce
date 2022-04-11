@@ -148,7 +148,7 @@ export const StyledHeader = styled(motion.header)`
   }
 
   .total{
-    color:var(--clr_b);
+    color:${({theme}) => theme.header.totalPrice.color};
   }
 
   .card-content-top img {

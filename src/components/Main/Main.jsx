@@ -99,8 +99,8 @@ const Main = () => {
       image: image,
       name: name,
     };
-    quantity > 0 && console.log(newItem);
-    setItemsArr([...itemsArr, newItem]);
+    quantity > 0 &&  setItemsArr([...itemsArr, newItem]);
+   
   };
 
 

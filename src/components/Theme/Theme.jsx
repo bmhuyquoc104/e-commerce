@@ -15,6 +15,9 @@ export const lightTheme = {
     cartTitle: {
       color: `var(--clr_b)`,
     },
+    totalPrice:{
+      color:`var(--clr_b)`
+    }
   },
   activeHeader: {
     backgroundColor: "var(--clr_w)",
@@ -59,6 +62,9 @@ export const darkTheme = {
       backgroundColor: "#0e0e0e",
       border: "rgba(255, 255, 255, 0.9)",
     },
+    totalPrice:{
+      color:`var(--clr_w)`
+    }
   },
   activeHeader: {
     backgroundColor: "var(--clr_b)",
