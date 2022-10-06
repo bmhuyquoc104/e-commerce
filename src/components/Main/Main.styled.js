@@ -13,7 +13,7 @@ export const StyledMainModal = styled.div`
     width: 70%;
   }
   & > :first-child {
-    text-align: right;
+    text-align: left;
   }
   & > :nth-child(2) {
     display: flex;

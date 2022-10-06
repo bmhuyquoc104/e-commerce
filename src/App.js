@@ -28,6 +28,7 @@ function App() {
         <GlobalStyle />
         <ItemContext.Provider value={{ setItemsArr, itemsArr }}>
           <Header
+            theme = {theme}
             themeToggler={ThemeTogglers}
             toggleSwitchThemeIcon={toggleSwitchThemeIcon}
           />

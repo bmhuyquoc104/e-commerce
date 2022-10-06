@@ -1,4 +1,4 @@
-import React, { useState,useContext } from "react";
+import React, { useState, useContext } from "react";
 import imageResoucres from "../../assets/imageResoucres";
 import { ItemContext } from "../../hooks/useContext";
 import {
@@ -10,13 +10,13 @@ import {
 import { AbsoluteFlexContainer } from "../Flex/Flex.styled";
 import { motion, AnimatePresence } from "framer-motion";
 
-const Header = ({ themeToggler, toggleSwitchThemeIcon }) => {
+const Header = ({ themeToggler, toggleSwitchThemeIcon, theme }) => {
   const [toggleMenu, setToggleMenu] = useState(false);
   const [toggleCart, setToggleCart] = useState(false);
 
-  // Access to the parent props 
-  const {setItemsArr,itemsArr} = useContext(ItemContext);
-    
+  // Access to the parent props
+  const { setItemsArr, itemsArr } = useContext(ItemContext);
+
   // Get the arr length for displaying purposes
   const cardQuantity = itemsArr.length;
 
@@ -24,7 +24,7 @@ const Header = ({ themeToggler, toggleSwitchThemeIcon }) => {
   const handleRemove = (id) => {
     const newList = itemsArr.filter((item) => item.id !== id);
     setItemsArr(newList);
-  }
+  };
 
   // Variants for ul animate
   const ulVariant = {
@@ -151,13 +151,24 @@ const Header = ({ themeToggler, toggleSwitchThemeIcon }) => {
                 duration: 0.1,
               }}
             >
-              <img
-                onClick={() => {
-                  setToggleMenu(false);
-                }}
-                src={imageResoucres.CloseIcon}
-                alt="CloseIcon"
-              ></img>
+              {theme === "lightTheme" ? (
+                <img
+                  onClick={() => {
+                    setToggleMenu(false);
+                  }}
+                  src={imageResoucres.CloseIcon}
+                  alt="CloseIcon"
+                ></img>
+              ) : (
+                <img
+                  onClick={() => {
+                    setToggleMenu(false);
+                  }}
+                  src={imageResoucres.CloseDarkModeIcon}
+                  alt="CloseDarkModeIcon"
+                ></img>
+              )}
+
               <motion.ul
                 key="After"
                 variants={ulVariant}
@@ -196,7 +207,10 @@ const Header = ({ themeToggler, toggleSwitchThemeIcon }) => {
                         <h4 className="total">{item.totalPrice}</h4>
                       </div>
                     </div>
-                    <div onClick={() => handleRemove(item.id)} className="card-icon">
+                    <div
+                      onClick={() => handleRemove(item.id)}
+                      className="card-icon"
+                    >
                       <img src={imageResoucres.DeleteIcon} alt="Delete icon" />
                     </div>
                   </div>
